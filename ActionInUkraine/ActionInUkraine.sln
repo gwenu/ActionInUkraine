@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInUkraine.Web", "ActionInUkraine.Web\ActionInUkraine.Web.csproj", "{40B01747-DDB1-42C6-BE84-A997750D5F06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInUkraine.Web.Tests", "ActionInUkraine.Web.Tests\ActionInUkraine.Web.Tests.csproj", "{3E3B13EC-9690-4448-96F8-DEDB331811A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInUkraine.Common", "ActionInUkraine.Common\ActionInUkraine.Common.csproj", "{760E51EA-DF2A-4A65-A4F2-287F636EA1B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInUkraine.Server", "ActionInUkraine.Server\ActionInUkraine.Server.csproj", "{9AEFBF51-95C1-40D5-BA11-EC78E9C84CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInUkraine.Tools", "ActionInUkraine.Tools\ActionInUkraine.Tools.csproj", "{D249BF26-280F-4215-8F57-0A490D189371}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionInUkraine.Entity", "ActionInUkraine.Entity\ActionInUkraine.Entity.csproj", "{87755FCA-8AA9-4006-9BC9-7D79E76718A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8608925D-A50B-424E-A97B-317A6CC5D551}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40B01747-DDB1-42C6-BE84-A997750D5F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B01747-DDB1-42C6-BE84-A997750D5F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B01747-DDB1-42C6-BE84-A997750D5F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B01747-DDB1-42C6-BE84-A997750D5F06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E3B13EC-9690-4448-96F8-DEDB331811A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E3B13EC-9690-4448-96F8-DEDB331811A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E3B13EC-9690-4448-96F8-DEDB331811A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E3B13EC-9690-4448-96F8-DEDB331811A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{760E51EA-DF2A-4A65-A4F2-287F636EA1B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760E51EA-DF2A-4A65-A4F2-287F636EA1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760E51EA-DF2A-4A65-A4F2-287F636EA1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760E51EA-DF2A-4A65-A4F2-287F636EA1B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AEFBF51-95C1-40D5-BA11-EC78E9C84CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AEFBF51-95C1-40D5-BA11-EC78E9C84CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AEFBF51-95C1-40D5-BA11-EC78E9C84CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AEFBF51-95C1-40D5-BA11-EC78E9C84CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D249BF26-280F-4215-8F57-0A490D189371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D249BF26-280F-4215-8F57-0A490D189371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D249BF26-280F-4215-8F57-0A490D189371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D249BF26-280F-4215-8F57-0A490D189371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87755FCA-8AA9-4006-9BC9-7D79E76718A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87755FCA-8AA9-4006-9BC9-7D79E76718A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87755FCA-8AA9-4006-9BC9-7D79E76718A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87755FCA-8AA9-4006-9BC9-7D79E76718A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

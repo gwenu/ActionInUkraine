@@ -1,0 +1,46 @@
+﻿@model ActionInUkraine.Entity.UserProfile
+@using (Html.BeginForm("Manage", "Account"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div>
+        <h5>Ім'я:</h5>
+        @Html.DisplayTextFor(m => m.FirstName)
+    </div>
+    <div>
+        <h5>Прізвище:</h5>
+        @Html.DisplayTextFor(m => m.SecondName)
+    </div>
+    <div>
+        <h5>Вік:</h5>
+        @ViewBag.age
+    </div>
+    <div>
+        <h5>Країна:</h5>
+    </div>
+    <div>
+        <h5>Діяльність:</h5>
+    </div>
+    <div>
+        <h5>Телефон:</h5>
+    </div>
+    <div>
+        <h5>Мейл:</h5>
+        @Html.DisplayTextFor(m => m.Email)
+    </div>
+    <div>
+        <h5>Автор(мої проекти):</h5>
+    </div>
+    <div>
+        <h5>В команді:</h5>
+    </div>
+    <div>
+        <h5>Реалізовані проекти:</h5>
+    </div>
+    <div>
+        <h5>Улюблені ідеї:</h5>
+    </div>
+    <div>
+        <h5>Мої запитання:</h5>
+    </div>
+}

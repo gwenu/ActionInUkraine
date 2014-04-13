@@ -1,0 +1,149 @@
+﻿@model ActionInUkraine.Entity.LoginModel
+@using ActionInUkraine.Tools.Constants
+@using Resources
+
+<div id="applicationHost">
+    Loading....
+</div>
+
+@*<header>
+        <h1>@ViewBag.Title</h1>
+    </header>
+
+
+    <a href="#" data-bind="click: loadTop">
+        <span>@CommonResources.Top</span>
+    </a>
+    <br />
+    <a href="#" data-bind="click:  loadTopByUser">
+        <span>@CommonResources.Mine</span>
+    </a>
+
+
+
+    <div id="allTops" data-bind="if: flow() == 'allTops'">
+
+        <div id="list">
+            <h3>@CommonResources.IdeasOfTheMonth</h3>
+            <ul data-bind="foreach: ideas">
+                <li data-bind="click: $parent.showMore" style="cursor: pointer">
+                    <span data-bind="text: title"></span><br />
+                    <img width="64px" height="64px" data-bind="attr:{src: image}" /> <br />
+                </li>
+            </ul>
+        </div>
+
+        <div id="comments">
+            <h3>@CommonResources.TopComments</h3>
+            <ul data-bind="foreach: comments">
+                <li>
+                    <span data-bind="text: title"></span><br />
+                    <span data-bind="text: content"></span><br />
+                </li>
+            </ul>
+        </div>
+
+        <div id="blogs">
+            <h3>@CommonResources.TopBlogs</h3>
+            <ul data-bind="foreach: blogs">
+                <li>
+                    <span data-bind="text: author"></span><br />
+                    <span data-bind="text: link"></span><br />
+                </li>
+            </ul>
+        </div>
+
+        <div id="news">
+            <h3>@CommonResources.TopNews</h3>
+            <ul data-bind="foreach: news">
+                <li>
+                    <span data-bind="text: title"></span><br />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <div id="usersTops" data-bind="if: flow() == 'usersTops'">
+
+        @if (@User.Identity.IsAuthenticated)
+        {
+            <div id="list">
+                <h3>@CommonResources.YourIdeas</h3>
+                <ul data-bind="foreach: ideas">
+                    <li data-bind="click: $parent.showMore" style="cursor: pointer">
+                        <img width="64px" height="64px" data-bind="attr:{src: image}" /> <br />
+                        <span data-bind="text: title"></span><br />
+                    </li>
+                </ul>
+            </div>
+
+            <div id="comments">
+                <h3>@CommonResources.YourComments</h3>
+                <ul data-bind="foreach: comments">
+                    <li>
+                        <span data-bind="text: content"></span><br />
+                        <span data-bind="text: title"></span><br />
+                    </li>
+                </ul>
+            </div>
+
+            <div id="blogs">
+                <h3>@CommonResources.Blog</h3>
+                <ul data-bind="foreach: blogs">
+                    <li>
+                        <span data-bind="text: link"></span><br />
+                        <span data-bind="text: author"></span><br />
+                    </li>
+                </ul>
+            </div>
+
+            <div id="news">
+                <h3>@CommonResources.YourNews</h3>
+                <ul data-bind="foreach: news">
+                    <li>
+                        <span data-bind="text: title"></span><br />
+                    </li>
+                </ul>
+            </div>
+        }
+        else
+        {
+            <text>
+                @CommonResources.LogInOrSignUp @Html.ActionLink(CommonResources.Here, Actions.INDEX, Controllers.ACCOUNT, new { area = "" }, null)
+            </text>
+        }
+
+    </div>*@
+
+
+
+
+
+@*@if (@User.Identity.IsAuthenticated)
+    {
+        <h1>Authenticated</h1>
+    }
+    else
+    {
+        <h1>Not Authenticated</h1>
+    }
+
+    @if (@User.Identity.IsAuthenticated)
+    {
+        @section scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    }*@
+
+
+
+@section scripts {
+    @Scripts.Render("~/scripts/vendor")
+    <script type="text/javascript" src="~/App/durandal/amd/require.js"
+            data-main="/App/main"></script>
+    @Scripts.Render("~/bundles/loadFeeds")
+    @Scripts.Render("~/bundles/jqueryval")
+}

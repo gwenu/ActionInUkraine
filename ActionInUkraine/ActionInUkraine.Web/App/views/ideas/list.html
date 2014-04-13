@@ -1,0 +1,9 @@
+﻿<div>
+    <ul data-bind="foreach: ideas">
+        <li>
+            <span data-bind="text: title"></span><br />
+            <img width="128px" data-bind="attr:{src: image}" /> <br />
+            <a data-bind="attr:{href:'#/ideas/details/'+ideaID}">Details</a>
+        </li>
+    </ul>
+</div>

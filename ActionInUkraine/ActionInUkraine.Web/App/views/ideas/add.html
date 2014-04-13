@@ -1,0 +1,154 @@
+﻿<div data-bind="with: ideaToAdd">
+    <p>
+        <h4>Назва проекту *</h4>
+        <input type="text" data-bind="value: title" id="title" required />
+    </p>
+    <p>
+       
+        <form method="post">
+            <h4>Зображення</h4>
+            <input id="file1" accept="image/*" name="file1" type="file" value="Завантажити" />
+            <!--<input id="uploadImageBtn" data-bind='click:$parent.onUpload' type="button" value=завантажити />-->
+        </form>
+        <img id="blah" />
+        <!--<img id="blah" src="#" alt="your image" />-->
+    </p>
+    <p>
+        <h4>Категорія *</h4>
+        <select data-bind="options: $parent.categories, value: category, optionsCaption: '<виберіть категорію>'" id="Category"></select>
+        <br />
+    </p>
+    <p>
+        <h4>Короткий опис</h4>
+        <textarea id="description" data-bind="value: description" rows="3" required></textarea>
+    </p>
+    <div>
+        <h4>Соціальні мережі</h4>
+        <p>
+            <input type="text" id="socialNetworkItem" style="width: 200px;" data-bind="value:socialNetworkItem, valueUpdate:'afterkeydown'" />
+            <input type="button" id="addSocialNetwork" data-bind='click:$parent.addSocialNetwork, enable: socialNetworkItem' value="+" />
+
+            <ul data-bind="foreach: socialNetworks">
+                <li>
+                    <a data-bind="text: $data,
+                              attr: {href: $data}" />
+                    <input type="button" data-bind="click:$root.removeSocialNetwork.bind($parent, $data)" value="-" />
+                </li>
+            </ul>
+        </p>
+    </div>
+    <!--<div>
+        <h4>Команда</h4>
+        <input type="text" id="search" placeholder="Search for a user" data-bind="value:user, valueUpdate:['blur','afterkeydown']" />
+        <input type="button" id="addUser" data-bind='click:$parent.addUser' disabled value="+" />
+        <ul data-bind="foreach: team">
+            <li>
+                <a data-bind="text: $data" />
+                <input type="button" data-bind="click:$root.removeUser.bind($parent, $data)" value="-" />
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h4>Мета та цілі проекту:</h4>
+        <textarea data-bind="value: goals" rows="5" required></textarea>
+    </div>-->
+
+    <div>
+        <p>
+            <input type='checkbox' data-bind="checked: needPeople" />
+            Люди?
+        </p>
+        <p>
+            Кого:
+            <input type='text' data-bind="value: people, enable: needPeople" />
+        </p>
+    </div>
+    <div>
+        <p>
+            <input type='checkbox' data-bind="checked: needMoney" />
+            Гроші?
+        </p>
+        <p>
+            К-сть:
+            <input type='text' data-bind="value: money, enable: needMoney" />
+        </p>
+    </div>
+    <div>
+        <p>
+            <input type='checkbox' data-bind="checked: needFeedback" />
+            Відгуки?
+        </p>
+
+    </div>
+    <div>
+        <p>
+            <input type='checkbox' data-bind="checked: needAdvert" />
+            Реклама?
+        </p>
+    </div>
+    <div>
+        <p>
+            <input type='checkbox' data-bind="checked: needSmthElse" />
+            <label>Щось інше нннада?</label>
+        </p>
+        <p>
+            Що:
+            <input type='text' data-bind="value: smthElse, enable: needSmthElse" />
+        </p>
+    </div>
+    <!--<div>
+        <h4>Склади бюджет проету</h4>
+        <table data-bind='visible: budget().length > 0'>
+            <thead>
+                <tr>
+                    <th>Стаття витрат</th>
+                    <th>Необхідна сума</th>
+                    <th />
+                </tr>
+            </thead>
+            <tbody data-bind='foreach: budget'>
+                <tr>
+                    <td><input class='required' data-bind='value: name, uniqueName: true' /></td>
+                    <td><input class='required number' data-bind='value: price, uniqueName: true' /></td>
+                    <td><input type="button" data-bind="click:$root.removeBudgetItem.bind($parent, $data)" value="-" /></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <input type="button" data-bind='click:$parent.addBudgetItem' value="+" />
+    </div>-->
+    <div>
+        <p>
+            <h4>Що вже є у проекті?</h4>
+            <input type="text" data-bind="value: alreadyIs" id="title" required />
+        </p>
+    </div>
+    <!--<div>
+        <h4>Заплануй події та важливі заходи проекту</h4>
+        <table data-bind='visible: events().length > 0'>
+            <thead>
+                <tr>
+                    <th>Подія</th>
+                    <th>Дата</th>
+                    <th />
+                </tr>
+            </thead>
+            <tbody data-bind='foreach: events'>
+                <tr>
+                    <td><input data-bind='value: event, uniqueName: true' /></td>
+                    <td><input class="datepicker" data-bind='value: date, uniqueName: true' /></td>
+
+                    <td><input type="button" data-bind="click:$root.removeEventItem.bind($parent, $data)" value="-" /></td>
+
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" data-bind='click:$parent.addEventItem' value="+" />
+
+    </div>-->
+    <div>
+        <input type="button" data-bind='click: $parent.addIdea' value="Створити" />
+        <a href="#/ideas/list">Cancel</a>
+    </div>
+</div>

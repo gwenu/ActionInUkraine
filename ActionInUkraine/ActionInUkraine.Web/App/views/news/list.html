@@ -1,0 +1,18 @@
+﻿
+<div>
+    <ul data-bind="foreach: news">
+        <li>
+            <span data-bind="text: title"></span><br />
+            <a data-bind="attr:{href:'#/news/details/'+title}">Details</a>
+        </li>
+    </ul>
+</div>
+
+
+<!--<h3>@CommonResources.Ideas</h3>
+<ul data-bind="foreach: ideas">
+    <li data-bind="click: $parent.showMore" style="cursor: pointer">
+        <span data-bind="text: title"></span><br />
+        <img width="64px" height="64px" data-bind="attr:{src: image}" /> <br />
+    </li>
+</ul>-->
