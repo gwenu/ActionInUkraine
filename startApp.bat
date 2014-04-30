@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Common Files\Microsoft Shared\DevServer\11.0\WebDev.WebServer40.exe" /path:"C:\Users\tar\Downloads\Action in Ukraine\ActionInUkraine\ActionInUkraine.Web" /port:2105
