@@ -1,63 +1,16 @@
-﻿@using ActionInUkraine.Tools.Constants
-@using Resources
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <section id="login">
-        @Html.Partial("_LoginPartial")
-    </section>
-    <div style="display: table">
-        <div style="display: table-row">
-            <div style="display: table-cell; width: 300px">
-                <nav>
-                    <ul style="margin-top: 150px">
-
-                        <li><a href="/#/">Головна</a></li>
-                        <li><a href="/#/ideas/add">Додати ідею</a></li>
-                        <li><a href="/#/ideas/list">Ідеї</a></li>
-                        <li><a href="/#">Форум</a></li>
-                        <li><a href="/#/news/list">Новини</a></li>
-                        <li><a href="/#">Для розвитку</a></li>
-                        @*<br />
-                            <li>@Html.ActionLink(CommonResources.AddIdea+" old", Actions.INDEX, Controllers.IDEAS, new { idea = "new" }, null)</li>
-                                <li>
-                                @Html.ActionLink("Ідеї old", Actions.INDEX, Controllers.IDEAS)
-                            </li>
-                            <li>@Html.ActionLink(CommonResources.Blogs, Actions.BLOGS, Controllers.HOME)</li>
-                            <li>
-                                @Html.ActionLink(CommonResources.News, Actions.NEWS, Controllers.HOME)
-                            </li>*@
-                    </ul>
-                </nav>
-            </div>
-            <div id="body" style="display: table-cell">
-                @RenderBody()
-            </div>
-        </div>
-    </div>
-    <footer>
-        <nav>
-            <ul id="menu">
-                <li>@Html.ActionLink("Якісь лінки (!)", "Index", "Home")</li>
-                <li>@Html.ActionLink("Команда (!)", "Index", "Home")</li>
-                <li>@Html.ActionLink("Зворотній зв'язок (!)", "Index", "Home")</li>
-                <li><p>&copy; @DateTime.Now.Year - Моя Ідея</p></li>
-            </ul>
-        </nav>
-    </footer>
+    @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/ajaxlogin")
-    @Scripts.Render("~/bundles/knockout")
     @RenderSection("scripts", required: false)
 </body>
 </html>

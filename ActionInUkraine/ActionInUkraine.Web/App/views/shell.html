@@ -1,10 +1,56 @@
-﻿<h3> Some text in shell file(it's just like master page of durandal) ^_^ </h3>
-    
-<div class="container-fluid page-host">
-    <!--ko compose: { 
-        model: router.activeItem, //wiring the router
-        afterCompose: router.afterCompose, //wiring the router
-        transition:'entrance', //use the 'entrance' transition when switching views
-        cacheViews:true //telling composition to keep views in the dom, and reuse them (only a good idea with singleton view models)
-    }--><!--/ko-->
+﻿<div id="content-wrapper">
+    <div id="header">
+        <div id="header-logo">
+            <div id="header-logo-image" data-bind="click: navigateToHome"></div>
+        </div>
+        <div id="header-menu" data-bind="foreach: hederMenu">
+            <div class="nav-item" data-bind="css: { active: isActive }">
+                <a data-bind="attr: { href: hash }, html: name"></a>
+            </div>
+        </div>
+        <div id="profile-action">
+            <div id="profile-action-icon">PA</div>
+            <div id="profile-action-container">
+                <div id="registration" data-bind="with: actions[0]">
+                    <div class="icon"></div>
+                    <div class="label"><a data-bind="attr: { href: hash }, html: name"></a></div>
+                </div>
+                <div id="search">
+                    <div class="search-icon"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="banner">
+            <div id="banner-image">
+                <div id="banner-info-canvas"></div>
+                <div id="banner-info">
+                    <div id="title">Середовище розвитку творчого потенціалу молоді</div>
+                    <div id="info-text">
+                        Це - активні, непосидючі мрійники, які вірять у красу своїх ідей.
+                        Тут їм не страшно помилитися, натомість можна навчитися методом проб, помилок та підказок досвідченіших молодих, старших, різних.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="idea-menu-container">
+            <div id="idea-nav-menu" data-bind="foreach: ideaMenu">
+                <div class="nav-item" data-bind="css: { active: isActive }">
+                    <a data-bind="attr: { href: hash }, html: name"></a>
+                </div>
+            </div>
+            <div id="idea-categories">Категорії</div>
+        </div>
+        <div id="container">
+            <!--ko compose: {
+                   model: router.activeItem,
+                   afterCompose: router.afterCompose,
+                   transition:'entrance' }-->
+            <!--/ko-->
+        </div>
+    </div>
 </div>
+
+
+
