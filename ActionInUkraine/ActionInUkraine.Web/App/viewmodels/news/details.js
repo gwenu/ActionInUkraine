@@ -25,7 +25,7 @@
                 self.idea(idea);
         
             });
-            this.ideaToShow.title(self.idea().title);
+           /* this.ideaToShow.title(self.idea().title);
             this.ideaToShow.image(self.idea().image);
             this.ideaToShow.category(self.idea().category);
             this.ideaToShow.description(self.idea().description);
@@ -34,7 +34,7 @@
             this.ideaToShow.endDate(self.idea().endDate);
             this.ideaToShow.othersList(self.idea().othersList);
             this.ideaToShow.otherToAdd(self.idea().otherToAdd);
-            this.ideaToShow.goalToAdd(self.idea().goalToAdd);
+            this.ideaToShow.goalToAdd(self.idea().goalToAdd);*/
           //  this.ideaToShow = ko.mapping.fromJS(self.idea(), this.ideaToShow)
 
             var disqus_shortname = 'diyavukrayini';

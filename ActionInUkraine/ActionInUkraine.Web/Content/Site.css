@@ -1,4 +1,4 @@
-﻿.unknown {
+﻿/*.unknown {
     width: 200px;
     height: 200px;
 }
@@ -18,7 +18,7 @@ body, input, button {
 body {
     background-color: #fff;
     color: #333;
-    max-width: 980px; /*Remove this to make it full screen*/
+    max-width: 980px; //Remove this to make it full screen
     margin: 1em auto;
 }
 
@@ -36,7 +36,7 @@ button, input[type=submit] {
     padding-left: 10px;
 }
 
-/*#region Header */
+//#region Header 
 
 header {
     margin: 0 .7em;
@@ -74,9 +74,9 @@ header {
         margin-left: .8em;
     }
 
-/*#endregion */
+//#endregion 
 
-/*#region forms */
+//#region forms
 
 #changePasswordForm input,
 #registerForm input,
@@ -196,14 +196,14 @@ ol.round {
     padding-left: 0;
 }
 
-/*#endregion */
+//#endregion
 
 #main-content {
     min-height: 400px;
     text-align: center;
 }
 
-/*#region info and errors */
+//#region info and errors
 .error {
     float: none;
     color: red;
@@ -223,9 +223,9 @@ ol.round {
     margin: 0 !important;
 }
 
-/*#endregion */
+//#endregion 
 
-/*#region Unauthorized */
+//#region Unauthorized
 
 #unauthorized {
     margin: 3em 0;
@@ -252,16 +252,16 @@ ol.round {
             margin-right: 2em;
         }
 
-/*#endregion */
+//#endregion
 
-/*#region Footer */
+//#region Footer
 
 footer {
     clear: both;
     margin: 5em 5em .7em 0;
 }
 
-/*#endregion */
+//#endregion
 
 @media only screen and (max-width: 600px) {
 
@@ -273,4 +273,4 @@ footer {
         text-align: center;
         clear: both;
     }
-}
+}*/

@@ -1,9 +1,9 @@
 ﻿define(function (require) {
-    var app = require('durandal/app');
 
     return {
+        news: ko.observableArray(),
         activate: function () {
-            return "Home";
+            return "Forum";
         }
-    };
+    }
 });
