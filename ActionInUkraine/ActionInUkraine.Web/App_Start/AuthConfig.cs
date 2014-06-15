@@ -2,7 +2,7 @@
 using ActionInUkraine.Web.Implementations.Authentication;
 using Microsoft.Web.WebPages.OAuth;
 
-namespace ActionInUkraine.Web.App_Start
+namespace ActionInUkraine.Web
 {
   public static class AuthConfig
   {

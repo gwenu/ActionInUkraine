@@ -11,13 +11,13 @@ namespace ActionInUkraine.Web.Implementations.Authentication
     {
         public static UserProfile GetUser(string username)
         {
-            UnitOfWork uow = new UnitOfWork();
+            var uow = new UnitOfWork();
             return uow.UserProfileRepository.Get(u => u.Email == username).SingleOrDefault();
         }
 
         public static void UpdateUser(UserProfile user)
         {
-            using (UnitOfWork uow = new UnitOfWork())
+            using (var uow = new UnitOfWork())
             {
                 uow.UserProfileRepository.Update(user);
                 uow.Save();
@@ -34,14 +34,14 @@ namespace ActionInUkraine.Web.Implementations.Authentication
             UserProfile dbUser = GetUser(user.Email);
             if (dbUser != null)
                 throw new Exception("User with that username already exists.");
-            UnitOfWork uow = new UnitOfWork();
+            var uow = new UnitOfWork();
             uow.UserProfileRepository.Insert(user);
             uow.Save();
         }
 
         public static bool FoundUser(string username)
         {
-            UnitOfWork uow = new UnitOfWork();
+            var uow = new UnitOfWork();
             UserProfile user = uow.UserProfileRepository.Get(u => u.Email == username).SingleOrDefault();
             return user != null;
         }
@@ -49,7 +49,7 @@ namespace ActionInUkraine.Web.Implementations.Authentication
         public static string GetEmail(string username)
         {
             string email = null;
-            UnitOfWork uow = new UnitOfWork();
+            var uow = new UnitOfWork();
             UserProfile user = uow.UserProfileRepository.Get(u => u.Email == username).SingleOrDefault();
             if (user != null)
                 email = user.Email;
@@ -58,7 +58,7 @@ namespace ActionInUkraine.Web.Implementations.Authentication
 
         public static void Register()
         {
-            SecurityContext context = new SecurityContext();
+            var context = new SecurityContext();
             context.Database.Initialize(true);
             if (!WebMatrix.WebData.WebSecurity.Initialized)
             {
@@ -69,7 +69,7 @@ namespace ActionInUkraine.Web.Implementations.Authentication
 
         public static bool ValidateUser(string userName, string password)
         {
-            var membership = (WebMatrix.WebData.SimpleMembershipProvider)Membership.Provider;
+            var membership = (SimpleMembershipProvider)Membership.Provider;
             return membership.ValidateUser(userName, password);
 
         }
@@ -158,7 +158,7 @@ namespace ActionInUkraine.Web.Implementations.Authentication
 
         public static string GetConfirmationToken(string userName)
         {
-            UnitOfWork uow = new UnitOfWork();
+            var uow = new UnitOfWork();
             int userId = uow.UserProfileRepository.Get(u => u.Email == userName).Select(x => x.UserId).SingleOrDefault();
             string token = uow.MembershipRepository.GetConfirmationToken(userId);
             return token;

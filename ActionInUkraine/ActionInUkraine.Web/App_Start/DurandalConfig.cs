@@ -1,10 +1,10 @@
-using System;
 using System.Web.Optimization;
+using ActionInUkraine.Web;
 
 [assembly: WebActivator.PostApplicationStartMethod(
-    typeof(DurandalMovieApp.App_Start.DurandalConfig), "PreStart")]
+    typeof(DurandalConfig), "PreStart")]
 
-namespace DurandalMovieApp.App_Start
+namespace ActionInUkraine.Web
 {
     public static class DurandalConfig
     {

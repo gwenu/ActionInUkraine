@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace ActionInUkraine.Web.App_Start
+namespace ActionInUkraine.Web
 {
     public static class BundleConfig
     {

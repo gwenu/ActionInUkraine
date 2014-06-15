@@ -1,7 +1,8 @@
 ﻿using System.Web.Http;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace ActionInUkraine.Web.App_Start
+namespace ActionInUkraine.Web
 {
     public static class WebApiConfig
     {
@@ -39,11 +40,10 @@ namespace ActionInUkraine.Web.App_Start
             config.EnableSystemDiagnosticsTracing();
 
             // Use camel case for JSON data.
-            var jsonFormatter = config.Formatters.JsonFormatter;
-            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-            jsonFormatter.SerializerSettings.PreserveReferencesHandling =
-                Newtonsoft.Json.PreserveReferencesHandling.Objects;
-            jsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            var serializerSettings = config.Formatters.JsonFormatter.SerializerSettings;
+            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            serializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+            serializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         }
     }
 }

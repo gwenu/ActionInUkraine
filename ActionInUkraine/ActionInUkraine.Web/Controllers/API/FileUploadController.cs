@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using System.Web;
-using System.IO;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Http;
 
 namespace ActionInUkraine.Web.Controllers.API
 {
@@ -20,7 +18,7 @@ namespace ActionInUkraine.Web.Controllers.API
             if (Request.Content.IsMimeMultipartContent())
             {
                 string fullPath = HttpContext.Current.Server.MapPath("~/uploads");
-                MyMultipartFormDataStreamProvider streamProvider = new MyMultipartFormDataStreamProvider(fullPath);
+                var streamProvider = new MyMultipartFormDataStreamProvider(fullPath);
                 var task = Request.Content.ReadAsMultipartAsync(streamProvider).ContinueWith(t =>
                 {
                     if (t.IsFaulted || t.IsCanceled)
@@ -36,13 +34,10 @@ namespace ActionInUkraine.Web.Controllers.API
                 });
                 return task;
             }
-            else
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "Invalid Request!"));
-            }
+            
+            throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "Invalid Request!"));
         }
     }
-
 
     public class MyMultipartFormDataStreamProvider : MultipartFormDataStreamProvider
     {
@@ -68,7 +63,7 @@ namespace ActionInUkraine.Web.Controllers.API
         }
 
 
-        public override string GetLocalFileName(System.Net.Http.Headers.HttpContentHeaders headers)
+        public override string GetLocalFileName(HttpContentHeaders headers)
         {
             string oldfileName = null;
             string newfileName = null;
@@ -76,10 +71,9 @@ namespace ActionInUkraine.Web.Controllers.API
             if (!string.IsNullOrWhiteSpace(headers.ContentDisposition.FileName))
             {
                 oldfileName = headers.ContentDisposition.FileName.Replace("\"", string.Empty);
-                newfileName = Guid.NewGuid().ToString() + Path.GetExtension(oldfileName); ;
+                newfileName = Guid.NewGuid() + Path.GetExtension(oldfileName);
             }
-
-
+            
 
             //if (!string.IsNullOrWhiteSpace(headers.ContentDisposition.FileName))
             //{

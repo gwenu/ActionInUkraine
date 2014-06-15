@@ -1,9 +1,9 @@
 using System;
 using System.Web.Optimization;
 
-namespace DurandalMovieApp
+namespace ActionInUkraine.Web
 {
-    public class DurandalBundleConfig
+    public static class DurandalBundleConfig
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
