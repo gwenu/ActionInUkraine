@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace ActionInUkraine.Web.App_Start
+namespace ActionInUkraine.Web
 {
     public static class FilterConfig
     {

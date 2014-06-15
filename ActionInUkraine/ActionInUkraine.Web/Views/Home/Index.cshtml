@@ -9,9 +9,9 @@
     @Styles.Render("~/Content/main.css")
 </head>
 <body>
-
+    @Html.Partial("_LoginPartial")
     <div id="applicationHost">
-        Loading app....
+        @CommonResources.Loading
     </div>
 
     @Scripts.Render("~/scripts/vendor")

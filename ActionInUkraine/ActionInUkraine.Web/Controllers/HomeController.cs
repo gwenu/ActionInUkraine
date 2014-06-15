@@ -16,8 +16,8 @@ namespace ActionInUkraine.Web.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var _db = new UsersContext();
-                ViewBag.FirstName = _db.UserProfiles.Where(c => c.Email == User.Identity.Name).First().FirstName;
+                var db = new UsersContext();
+                ViewBag.FirstName = db.UserProfiles.First(c => c.Email == User.Identity.Name).FirstName;
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
