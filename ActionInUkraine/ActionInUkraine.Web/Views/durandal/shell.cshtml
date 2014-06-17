@@ -11,10 +11,11 @@
         <div id="profile-action">
             <div id="profile-action-icon">PA</div>
             <div id="profile-action-container">
-                <div id="registration" data-bind="with: actions[0]">
+                @Html.Partial("_LoginPartial")
+                @*<div id="registration" data-bind="with: actions[0]">
                     <div class="icon"></div>
                     <div class="label"><a data-bind="attr: { href: hash }, html: name"></a></div>
-                </div>
+                </div>*@
                 <div id="search">
                     <div class="search-icon"></div>
                 </div>
@@ -51,6 +52,3 @@
         </div>
     </div>
 </div>
-
-
-

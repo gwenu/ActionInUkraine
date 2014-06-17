@@ -2,7 +2,7 @@
 
     return {
         activate: function () {
-            return "Registration";
+            return "registration";
         }
     }
 });
