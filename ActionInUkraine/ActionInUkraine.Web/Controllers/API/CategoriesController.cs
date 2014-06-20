@@ -1,4 +1,5 @@
-﻿using ActionInUkraine.Web.Implementations.Base;
+﻿using ActionInUkraine.Entity;
+using ActionInUkraine.Web.Implementations.Base;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -11,7 +12,7 @@ namespace ActionInUkraine.Web.Controllers.API
         {
         }
         // GET api/categories
-        public List<string> Get()
+        public IEnumerable<Category> Get()
         {
             var categories = m_Repository.GetCategories();
             return categories;

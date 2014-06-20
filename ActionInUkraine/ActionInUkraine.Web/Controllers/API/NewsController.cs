@@ -12,27 +12,27 @@ namespace ActionInUkraine.Web.Controllers.API
         {
         }
         // GET api/news
-        public IEnumerable<NewsItem> Get()
+        public IEnumerable<Article> Get()
         {
-            var news = m_Repository.GetNews();
+            var news = m_Repository.GetArticles();
             return news;
         }
 
         // GET api/news/5
-        public NewsItem Get(int id)
+        public Article Get(int id)
         {
-            var NewsItem = m_Repository.GetNewsItem(id);
-            return NewsItem;
+            var article = m_Repository.GetArticle(id);
+            return article;
         }
 
         // POST api/news
-        public void Post([FromBody]NewsItem value)
+        public void Post([FromBody]Article value)
         {
 
         }
 
         // PUT api/news/5
-        public void Put(int id, [FromBody]NewsItem value)
+        public void Put(int id, [FromBody]Article value)
         {
         }
 

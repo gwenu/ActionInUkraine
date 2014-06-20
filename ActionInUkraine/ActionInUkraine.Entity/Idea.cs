@@ -1,42 +1,31 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
 namespace ActionInUkraine.Entity
 {
-    [Table("Idea")]
+    [Table("Ideas")]
     public class Idea
     {
+        public Idea()
+        {
+            Articles = new List<Article>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdeaID
-        {
-            get;
-            set;
-        }
+        public int IdeaID { get; set; }
 
-        public string Title
-        {
-            get;
-            set;
-        }
+        public string Title { get; set; }
 
-        public string Image
-        {
-            get;
-            set;
-        }
+        public string Image { get; set; }
 
-        public string Category
-        {
-            get;
-            set;
-        }
+        public int CategoryId { get; set; }
 
-        public string Description
-        {
-            get;
-            set;
-        }
+        public virtual Category Category { get; set; }
+
+        public string Description { get; set; }
 
 
         //  public virtual ICollection<SocialNetwork> SocialNetworks { get; set; }
@@ -49,48 +38,16 @@ namespace ActionInUkraine.Entity
         //        set;
         //    }
 
-        public Boolean? NeedPeople
-        {
-            get;
-            set;
-        }
+        public Boolean? NeedPeople { get; set; }
 
-        public string People
-        {
-            get;
-            set;
-        }
+        public string People { get; set; }
 
-        public Boolean? NeedMoney
-        {
-            get;
-            set;
-        }
-        public int? Money
-        {
-            get;
-            set;
-        }
-        public Boolean? NeedFeedback
-        {
-            get;
-            set;
-        }
-        public Boolean? NeedAdvert
-        {
-            get;
-            set;
-        }
-        public Boolean? NeedSmthElse
-        {
-            get;
-            set;
-        }
-        public String SmthElse
-        {
-            get;
-            set;
-        }
+        public Boolean? NeedMoney { get; set; }
+        public int? Money { get; set; }
+        public Boolean? NeedFeedback { get; set; }
+        public Boolean? NeedAdvert { get; set; }
+        public Boolean? NeedSmthElse { get; set; }
+        public String SmthElse { get; set; }
 
         //    public virtual ICollection<Expense> Expenses { get; set; }
 
@@ -102,8 +59,11 @@ namespace ActionInUkraine.Entity
         //    public virtual ICollection<Event> Events { get; set; }
 
         [ForeignKey("UserProfile")]
-        public virtual int UserId { get; set; }
+        public int UserId { get; set; }
+
         public virtual UserProfile UserProfile { get; set; }
+
+        public virtual ICollection<Article> Articles { get; private set; }
     }
 
     //public class Event
