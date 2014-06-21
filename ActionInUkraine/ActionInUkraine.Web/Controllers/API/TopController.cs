@@ -1,4 +1,5 @@
-﻿using ActionInUkraine.Entity;
+﻿using System.Linq;
+using ActionInUkraine.Entity;
 using ActionInUkraine.Web.Implementations.Base;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -25,9 +26,9 @@ namespace ActionInUkraine.Web.Controllers.API
             return ideas;
         }
         [ActionName("news")]
-        public IEnumerable<NewsItem> GetTopNews()
+        public IEnumerable<Article> GetTopNews()
         {
-            var news = m_Repository.GetNews();
+            var news = m_Repository.GetArticles().OrderByDescending(x => x.DatePublished).Take(5);
             return news;
         }
         //[ActionName("blogs")]

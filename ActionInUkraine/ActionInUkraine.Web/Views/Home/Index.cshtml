@@ -1,22 +1,18 @@
-﻿@{
-    Layout = null;
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Index</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/main.css")
 </head>
-<body>
+    <body>
+        <div id="applicationHost">
+            @CommonResources.Loading
+        </div>
 
-    <div id="applicationHost">
-        Loading app....
-    </div>
+        @Scripts.Render("~/scripts/vendor")
+        <script type="text/javascript" src="~/Scripts/app/durandal/amd/require.js"
+                data-main="/Scripts/app/main"></script>
 
-    @Scripts.Render("~/scripts/vendor")
-    <script type="text/javascript" src="~/App/durandal/amd/require.js"
-            data-main="/App/main"></script>
-
-</body>
+    </body>
 </html>

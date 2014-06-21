@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -23,7 +22,7 @@ namespace ActionInUkraine.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            LoginModel model = new LoginModel() { IsConfirmed = true };
+            var model = new LoginModel { IsConfirmed = true };
             return View(model);
         }
 
@@ -50,7 +49,8 @@ namespace ActionInUkraine.Web.Controllers
                 {
                     return RedirectToLocal(returnUrl);
                 }
-                else if (WebSecurity.FoundUser(model.Email) && !WebSecurity.IsConfirmed(model.Email))
+                
+                if (WebSecurity.FoundUser(model.Email) && !WebSecurity.IsConfirmed(model.Email))
                 {
                     model.IsConfirmed = false;
                     errorMsg = "You have not completed the registration process. To complete this process look for the email that provides instructions or press the button to resend the email.";
@@ -147,9 +147,9 @@ namespace ActionInUkraine.Web.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult RegisterConfirmation(string Id)
+        public ActionResult RegisterConfirmation(string id)
         {
-            if (WebSecurity.ConfirmAccount(Id))
+            if (WebSecurity.ConfirmAccount(id))
             {
                 return RedirectToAction("ConfirmationSuccess");
             }
@@ -210,7 +210,7 @@ namespace ActionInUkraine.Web.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation(string Id)
         {
-            ResetPasswordConfirmModel model = new ResetPasswordConfirmModel() { Token = Id };
+            var model = new ResetPasswordConfirmModel { Token = Id };
             return View(model);
         }
 
@@ -270,8 +270,8 @@ namespace ActionInUkraine.Web.Controllers
         // GET: /Account/Manage
         public ActionResult Manage(ManageMessageId? message)
         {
-            var _db = new UsersContext();
-            var user = _db.UserProfiles.Where(c => c.Email == User.Identity.Name).First();
+            var db = new UsersContext();
+            var user = db.UserProfiles.First(c => c.Email == User.Identity.Name);
             ViewBag.age = Age(user.DOB);
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Пароль успішно змінено."
@@ -296,65 +296,65 @@ namespace ActionInUkraine.Web.Controllers
         //
         // POST: /Account/Manage
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
-        {
-            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.HasLocalPassword = hasLocalAccount;
-            ViewBag.ReturnUrl = Url.Action("Manage");
-            if (hasLocalAccount)
-            {
-                if (ModelState.IsValid)
-                {
-                    // ChangePassword will throw an exception rather than return false in certain failure scenarios.
-                    bool changePasswordSucceeded;
-                    try
-                    {
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
-                    }
-                    catch (Exception)
-                    {
-                        changePasswordSucceeded = false;
-                    }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Manage(LocalPasswordModel model)
+        //{
+        //    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+        //    ViewBag.HasLocalPassword = hasLocalAccount;
+        //    ViewBag.ReturnUrl = Url.Action("Manage");
+        //    if (hasLocalAccount)
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            // ChangePassword will throw an exception rather than return false in certain failure scenarios.
+        //            bool changePasswordSucceeded;
+        //            try
+        //            {
+        //                changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
+        //            }
+        //            catch (Exception)
+        //            {
+        //                changePasswordSucceeded = false;
+        //            }
 
-                    if (changePasswordSucceeded)
-                    {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
-                    }
-                }
-            }
-            else
-            {
-                // User does not have a local password so remove any validation errors caused by a missing
-                // OldPassword field
-                ModelState state = ModelState["OldPassword"];
-                if (state != null)
-                {
-                    state.Errors.Clear();
-                }
+        //            if (changePasswordSucceeded)
+        //            {
+        //                return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
+        //            }
+        //            else
+        //            {
+        //                ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // User does not have a local password so remove any validation errors caused by a missing
+        //        // OldPassword field
+        //        ModelState state = ModelState["OldPassword"];
+        //        if (state != null)
+        //        {
+        //            state.Errors.Clear();
+        //        }
 
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
-                    }
-                    catch (Exception e)
-                    {
-                        ModelState.AddModelError("", e);
-                    }
-                }
-            }
+        //        if (ModelState.IsValid)
+        //        {
+        //            try
+        //            {
+        //                WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
+        //                return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                ModelState.AddModelError("", e);
+        //            }
+        //        }
+        //    }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
-        }
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
         //
         // POST: /Account/ExternalLogin
@@ -459,7 +459,7 @@ namespace ActionInUkraine.Web.Controllers
         public ActionResult RemoveExternalLogins()
         {
             ICollection<OAuthAccount> accounts = OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name);
-            List<ExternalLogin> externalLogins = new List<ExternalLogin>();
+            var externalLogins = new List<ExternalLogin>();
             foreach (OAuthAccount account in accounts)
             {
                 AuthenticationClientData clientData = OAuthWebSecurity.GetOAuthClientData(account.Provider);

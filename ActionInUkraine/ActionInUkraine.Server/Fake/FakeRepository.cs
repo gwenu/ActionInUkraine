@@ -11,7 +11,6 @@ namespace ActionInUkraine.Server.Fake
 {
     public class FakeRepository : IRepository
     {
-
         // 
         public List<string> GetOthers()
         {
@@ -23,8 +22,8 @@ namespace ActionInUkraine.Server.Fake
                 string path = HttpContext.Current.Server.MapPath("/App_Data/othersList.xml");
                 xml = XDocument.Load(path);
                 others = xml.Root.Elements("other")
-                            .Select(element => element.Value)
-                            .ToList();
+                    .Select(element => element.Value)
+                    .ToList();
             }
             catch (DirectoryNotFoundException dirEx)
             {
@@ -45,70 +44,78 @@ namespace ActionInUkraine.Server.Fake
         public List<string> GetBlogsLinks()
         {
             var feeds = new List<string>
-                {
-                    "http://rss.news.yahoo.com/rss/entertainment",
-                    "http://pinterest.com/rollingstones50/feed.rss",
-                    "http://rollingstonesofficial.tumblr.com/rss"
-                };
+            {
+                "http://rss.news.yahoo.com/rss/entertainment",
+                "http://pinterest.com/rollingstones50/feed.rss",
+                "http://rollingstonesofficial.tumblr.com/rss"
+            };
             return feeds;
         }
-        public List<string> GetCategories()
+
+        public IEnumerable<Category> GetCategories()
         {
-            var categories = new List<string>
-                {
-                    "культура",
-                    "соціальний",
-                    "екологія",
-                    "освіта",
-                    "технології",
-                     "соціальне підприємництво",
-                    "інше"
-                };
-            return categories;
+            using (var context = new UsersContext())
+                return context.Categories;
         }
+
         //idea
         public IEnumerable<Idea> GetIdeas()
         {
-            UsersContext context = new UsersContext();
-            return context.Ideas;
+            using (var context = new UsersContext())
+                return context.Ideas;
         }
+
         public Idea GetIdea(int id)
         {
-            UsersContext context = new UsersContext();
-            return context.Ideas.First(a => a.IdeaID == id);
-
+            using (var context = new UsersContext())
+                return context.Ideas.Include("Category").FirstOrDefault(a => a.IdeaID == id);
         }
+
         public void AddIdea(Idea value)
         {
-            using (var _db = new UsersContext())
+            using (var context = new UsersContext())
             {
-                _db.Ideas.Add(value);
-                _db.SaveChanges();
+                context.Ideas.Add(value);
+                context.SaveChanges();
             }
-
         }
+
         public void UpdateIdea(int id, Idea value)
         {
         }
+
         public void DeleteIdea(int id)
         {
         }
+
         // news
-        public IEnumerable<NewsItem> GetNews()
+        public IEnumerable<Article> GetArticles()
         {
-            return null; ;
+            using (var context = new UsersContext())
+                return context.Articles;
         }
-        public NewsItem GetNewsItem(int id)
+
+        public IEnumerable<Article> GetIdeaArticles(int id)
         {
-            return null;
+            using (var context = new UsersContext())
+                return context.Articles.Where(x => x.IdeaId == id);
         }
-        public void AddNewsItem(NewsItem value)
+
+        public Article GetArticle(int id)
+        {
+            using (var context = new UsersContext())
+                return context.Articles.FirstOrDefault(x => x.ArticleId == id);
+        }
+
+        public void AddArticle(Article value)
         {
         }
-        public void UpdateNewsItem(int id, NewsItem value)
+
+        public void UpdateArticle(int id, Article value)
         {
         }
-        public void DeleteNewsItem(int id)
+
+        public void DeleteArticle(int id)
         {
         }
 

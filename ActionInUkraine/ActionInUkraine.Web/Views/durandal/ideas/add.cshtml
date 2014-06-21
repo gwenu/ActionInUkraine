@@ -4,7 +4,7 @@
         <input type="text" data-bind="value: title" id="title" required />
     </p>
     <p>
-       
+
         <form method="post">
             <h4>Зображення</h4>
             <input id="file1" accept="image/*" name="file1" type="file" value="Завантажити" />
@@ -15,7 +15,7 @@
     </p>
     <p>
         <h4>Категорія *</h4>
-        <select data-bind="options: $parent.categories, value: category, optionsCaption: '<виберіть категорію>'" id="Category"></select>
+        <select data-bind="options: $parent.categories, optionsText: 'Name', optionsValue: 'CategoryId', value: category, optionsCaption: '<виберіть категорію>'" id="Category"></select>
         <br />
     </p>
     <p>

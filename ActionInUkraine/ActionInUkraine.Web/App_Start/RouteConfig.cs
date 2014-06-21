@@ -2,7 +2,7 @@
 using System.Web.Routing;
 using ActionInUkraine.Tools.Constants;
 
-namespace ActionInUkraine.Web.App_Start
+namespace ActionInUkraine.Web
 {
     public static class RouteConfig
     {
